@@ -1,0 +1,102 @@
+{
+  "Morning": [
+    {
+      "title": "Morning Dhikr",
+      "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+      "translation": "Glory be to Allah and praise be to Him.",
+      "reference": "Sahih Muslim"
+    },
+    {
+      "title": "Morning Supplication",
+      "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+      "translation": "O Allah, by You we enter the morning, and by You we enter the evening, and by You we live, and by You we die, and to You is the final return.",
+      "reference": "Tirmidhi"
+    },
+    {
+      "title": "Protection from Evil",
+      "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      "translation": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+      "reference": "Sahih Muslim"
+    }
+  ],
+  "Evening": [
+    {
+      "title": "Evening Dhikr",
+      "arabic": "اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",
+      "translation": "O Allah, save me from the Fire.",
+      "reference": "Abu Dawud"
+    },
+    {
+      "title": "Evening Supplication",
+      "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ",
+      "translation": "O Allah, by You we enter the evening, and by You we enter the morning, and by You we live, and by You we die, and to You is the destination.",
+      "reference": "Tirmidhi"
+    }
+  ],
+  "Before Eating": [
+    {
+      "title": "Bismillah",
+      "arabic": "بِسْمِ اللَّهِ",
+      "translation": "In the name of Allah.",
+      "reference": "Sahih Bukhari"
+    },
+    {
+      "title": "Before Meal",
+      "arabic": "اللَّهُمَّ بَارِكْ لَنَا فِيهِ وَأَطْعِمْنَا خَيْرًا مِنْهُ",
+      "translation": "O Allah, bless it for us and feed us with what is better than it.",
+      "reference": "Tirmidhi"
+    }
+  ],
+  "After Eating": [
+    {
+      "title": "Alhamdulillah",
+      "arabic": "الْحَمْدُ لِلَّهِ",
+      "translation": "All praise is due to Allah.",
+      "reference": "Sahih Bukhari"
+    },
+    {
+      "title": "After Meal",
+      "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+      "translation": "Praise be to Allah who fed us and gave us drink and made us Muslims.",
+      "reference": "Abu Dawud"
+    }
+  ],
+  "Travel": [
+    {
+      "title": "Travel Supplication",
+      "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+      "translation": "Glory to Him who has subjected this to us, and we could never have it. And indeed, to our Lord we will return.",
+      "reference": "Surah Az-Zukhruf 43:13-14"
+    }
+  ],
+  "Seeking Forgiveness": [
+    {
+      "title": "Astaghfirullah",
+      "arabic": "أَسْتَغْفِرُ اللَّهَ",
+      "translation": "I seek forgiveness from Allah.",
+      "reference": "Common"
+    },
+    {
+      "title": "Istighfar",
+      "arabic": "رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ",
+      "translation": "My Lord, forgive me and accept my repentance. You are the Accepter of Repentance, the Merciful.",
+      "reference": "Sahih"
+    }
+  ],
+  "Entering Home": [
+    {
+      "title": "Entering Home",
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلِجِ وَخَيْرَ الْمَخْرَجِ بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا",
+      "translation": "O Allah, I ask You for the best entry and the best exit. In the name of Allah we enter, and in the name of Allah we exit.",
+      "reference": "Abu Dawud"
+    }
+  ],
+  "Leaving Home": [
+    {
+      "title": "Leaving Home",
+      "arabic": "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "translation": "In the name of Allah, I place my trust in Allah. There is no power and no strength except with Allah.",
+      "reference": "Tirmidhi"
+    }
+  ]
+}

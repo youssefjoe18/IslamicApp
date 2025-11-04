@@ -1,0 +1,596 @@
+[
+  {
+    "number": 1,
+    "arabic": "الرَّحْمَنُ",
+    "transliteration": "Ar-Rahman",
+    "meaning": "The Compassionate, The Beneficent"
+  },
+  {
+    "number": 2,
+    "arabic": "الرَّحِيمُ",
+    "transliteration": "Ar-Raheem",
+    "meaning": "The Merciful"
+  },
+  {
+    "number": 3,
+    "arabic": "الْمَلِكُ",
+    "transliteration": "Al-Malik",
+    "meaning": "The King, The Sovereign"
+  },
+  {
+    "number": 4,
+    "arabic": "الْقُدُّوسُ",
+    "transliteration": "Al-Quddus",
+    "meaning": "The Holy, The Pure"
+  },
+  {
+    "number": 5,
+    "arabic": "السَّلاَمُ",
+    "transliteration": "As-Salaam",
+    "meaning": "The Peace, The Secure"
+  },
+  {
+    "number": 6,
+    "arabic": "الْمُؤْمِنُ",
+    "transliteration": "Al-Mu'min",
+    "meaning": "The Faithful, The Trusted"
+  },
+  {
+    "number": 7,
+    "arabic": "الْمُهَيْمِنُ",
+    "transliteration": "Al-Muhaymin",
+    "meaning": "The Guardian, The Protector"
+  },
+  {
+    "number": 8,
+    "arabic": "الْعَزِيزُ",
+    "transliteration": "Al-Aziz",
+    "meaning": "The Mighty, The Strong"
+  },
+  {
+    "number": 9,
+    "arabic": "الْجَبَّارُ",
+    "transliteration": "Al-Jabbar",
+    "meaning": "The Compeller, The Restorer"
+  },
+  {
+    "number": 10,
+    "arabic": "الْمُتَكَبِّرُ",
+    "transliteration": "Al-Mutakabbir",
+    "meaning": "The Majestic, The Supreme"
+  },
+  {
+    "number": 11,
+    "arabic": "الْخَالِقُ",
+    "transliteration": "Al-Khaliq",
+    "meaning": "The Creator"
+  },
+  {
+    "number": 12,
+    "arabic": "الْبَارِئُ",
+    "transliteration": "Al-Bari",
+    "meaning": "The Evolver, The Maker"
+  },
+  {
+    "number": 13,
+    "arabic": "الْمُصَوِّرُ",
+    "transliteration": "Al-Musawwir",
+    "meaning": "The Fashioner, The Shaper"
+  },
+  {
+    "number": 14,
+    "arabic": "الْغَفَّارُ",
+    "transliteration": "Al-Ghaffar",
+    "meaning": "The Forgiver"
+  },
+  {
+    "number": 15,
+    "arabic": "الْقَهَّارُ",
+    "transliteration": "Al-Qahhar",
+    "meaning": "The Subduer, The Dominant"
+  },
+  {
+    "number": 16,
+    "arabic": "الْوَهَّابُ",
+    "transliteration": "Al-Wahhab",
+    "meaning": "The Bestower, The Giver"
+  },
+  {
+    "number": 17,
+    "arabic": "الرَّزَّاقُ",
+    "transliteration": "Ar-Razzaq",
+    "meaning": "The Provider, The Sustainer"
+  },
+  {
+    "number": 18,
+    "arabic": "الْفَتَّاحُ",
+    "transliteration": "Al-Fattah",
+    "meaning": "The Opener, The Victory Giver"
+  },
+  {
+    "number": 19,
+    "arabic": "اَلْعَلِيْمُ",
+    "transliteration": "Al-Aleem",
+    "meaning": "The All-Knowing, The Omniscient"
+  },
+  {
+    "number": 20,
+    "arabic": "الْقَابِضُ",
+    "transliteration": "Al-Qabid",
+    "meaning": "The Constrictor, The Withholder"
+  },
+  {
+    "number": 21,
+    "arabic": "الْبَاسِطُ",
+    "transliteration": "Al-Basit",
+    "meaning": "The Expander, The Reliever"
+  },
+  {
+    "number": 22,
+    "arabic": "الْخَافِضُ",
+    "transliteration": "Al-Khafid",
+    "meaning": "The Abaser, The Humbler"
+  },
+  {
+    "number": 23,
+    "arabic": "الرَّافِعُ",
+    "transliteration": "Ar-Rafi",
+    "meaning": "The Exalter, The Elevator"
+  },
+  {
+    "number": 24,
+    "arabic": "الْمُعِزُّ",
+    "transliteration": "Al-Mu'izz",
+    "meaning": "The Honorer, The Bestower of Honor"
+  },
+  {
+    "number": 25,
+    "arabic": "المُذِلُّ",
+    "transliteration": "Al-Mudhill",
+    "meaning": "The Humiliator, The Degrader"
+  },
+  {
+    "number": 26,
+    "arabic": "السَّمِيعُ",
+    "transliteration": "As-Samee",
+    "meaning": "The All-Hearing"
+  },
+  {
+    "number": 27,
+    "arabic": "الْبَصِيرُ",
+    "transliteration": "Al-Baseer",
+    "meaning": "The All-Seeing"
+  },
+  {
+    "number": 28,
+    "arabic": "الْحَكَمُ",
+    "transliteration": "Al-Hakam",
+    "meaning": "The Judge, The Arbitrator"
+  },
+  {
+    "number": 29,
+    "arabic": "الْعَدْلُ",
+    "transliteration": "Al-Adl",
+    "meaning": "The Just, The Equitable"
+  },
+  {
+    "number": 30,
+    "arabic": "اللَّطِيفُ",
+    "transliteration": "Al-Lateef",
+    "meaning": "The Gentle, The Subtle"
+  },
+  {
+    "number": 31,
+    "arabic": "الْخَبِيرُ",
+    "transliteration": "Al-Khabeer",
+    "meaning": "The Aware, The Expert"
+  },
+  {
+    "number": 32,
+    "arabic": "الْحَلِيمُ",
+    "transliteration": "Al-Haleem",
+    "meaning": "The Forbearing, The Patient"
+  },
+  {
+    "number": 33,
+    "arabic": "الْعَظِيمُ",
+    "transliteration": "Al-Azeem",
+    "meaning": "The Magnificent, The Great"
+  },
+  {
+    "number": 34,
+    "arabic": "الْغَفُورُ",
+    "transliteration": "Al-Ghafoor",
+    "meaning": "The Forgiving"
+  },
+  {
+    "number": 35,
+    "arabic": "الشَّكُورُ",
+    "transliteration": "Ash-Shakur",
+    "meaning": "The Appreciative, The Grateful"
+  },
+  {
+    "number": 36,
+    "arabic": "الْعَلِيُّ",
+    "transliteration": "Al-Ali",
+    "meaning": "The High, The Exalted"
+  },
+  {
+    "number": 37,
+    "arabic": "الْكَبِيرُ",
+    "transliteration": "Al-Kabeer",
+    "meaning": "The Great, The Big"
+  },
+  {
+    "number": 38,
+    "arabic": "الْحَفِيظُ",
+    "transliteration": "Al-Hafeedh",
+    "meaning": "The Preserver, The Guardian"
+  },
+  {
+    "number": 39,
+    "arabic": "المُقيِت",
+    "transliteration": "Al-Muqeet",
+    "meaning": "The Sustainer, The Maintainer"
+  },
+  {
+    "number": 40,
+    "arabic": "الْحسِيبُ",
+    "transliteration": "Al-Haseeb",
+    "meaning": "The Reckoner, The Sufficient"
+  },
+  {
+    "number": 41,
+    "arabic": "الْجَلِيلُ",
+    "transliteration": "Al-Jaleel",
+    "meaning": "The Majestic, The Revered"
+  },
+  {
+    "number": 42,
+    "arabic": "الْكَرِيمُ",
+    "transliteration": "Al-Kareem",
+    "meaning": "The Generous, The Noble"
+  },
+  {
+    "number": 43,
+    "arabic": "الرَّقِيبُ",
+    "transliteration": "Ar-Raqeeb",
+    "meaning": "The Watchful, The Observer"
+  },
+  {
+    "number": 44,
+    "arabic": "الْمُجِيبُ",
+    "transliteration": "Al-Mujeeb",
+    "meaning": "The Responsive, The Answerer"
+  },
+  {
+    "number": 45,
+    "arabic": "الْوَاسِعُ",
+    "transliteration": "Al-Wasi",
+    "meaning": "The All-Encompassing, The Boundless"
+  },
+  {
+    "number": 46,
+    "arabic": "الْحَكِيمُ",
+    "transliteration": "Al-Hakeem",
+    "meaning": "The Wise"
+  },
+  {
+    "number": 47,
+    "arabic": "الْوَدُودُ",
+    "transliteration": "Al-Wadud",
+    "meaning": "The Loving, The Kind One"
+  },
+  {
+    "number": 48,
+    "arabic": "الْمَجِيدُ",
+    "transliteration": "Al-Majeed",
+    "meaning": "The Glorious, The Most Honorable"
+  },
+  {
+    "number": 49,
+    "arabic": "الْبَاعِثُ",
+    "transliteration": "Al-Ba'ith",
+    "meaning": "The Resurrector, The Raiser"
+  },
+  {
+    "number": 50,
+    "arabic": "الشَّهِيدُ",
+    "transliteration": "Ash-Shaheed",
+    "meaning": "The Witness"
+  },
+  {
+    "number": 51,
+    "arabic": "الْحَقُّ",
+    "transliteration": "Al-Haqq",
+    "meaning": "The Truth, The Real"
+  },
+  {
+    "number": 52,
+    "arabic": "الْوَكِيلُ",
+    "transliteration": "Al-Wakeel",
+    "meaning": "The Trustee, The Dependable"
+  },
+  {
+    "number": 53,
+    "arabic": "الْقَوِيُّ",
+    "transliteration": "Al-Qawiyy",
+    "meaning": "The Strong"
+  },
+  {
+    "number": 54,
+    "arabic": "الْمَتِينُ",
+    "transliteration": "Al-Mateen",
+    "meaning": "The Firm, The Steadfast"
+  },
+  {
+    "number": 55,
+    "arabic": "الْوَلِيُّ",
+    "transliteration": "Al-Waliyy",
+    "meaning": "The Friend, The Helper"
+  },
+  {
+    "number": 56,
+    "arabic": "الْحَمِيدُ",
+    "transliteration": "Al-Hameed",
+    "meaning": "The Praiseworthy"
+  },
+  {
+    "number": 57,
+    "arabic": "الْمُحْصِي",
+    "transliteration": "Al-Muhsee",
+    "meaning": "The Counter, The Reckoner"
+  },
+  {
+    "number": 58,
+    "arabic": "الْمُبْدِئُ",
+    "transliteration": "Al-Mubdi",
+    "meaning": "The Originator, The Initiator"
+  },
+  {
+    "number": 59,
+    "arabic": "الْمُعِيدُ",
+    "transliteration": "Al-Mu'eed",
+    "meaning": "The Restorer, The Reinstater"
+  },
+  {
+    "number": 60,
+    "arabic": "الْمُحْيِي",
+    "transliteration": "Al-Muhyee",
+    "meaning": "The Giver of Life"
+  },
+  {
+    "number": 61,
+    "arabic": "اَلْمُمِيتُ",
+    "transliteration": "Al-Mumeet",
+    "meaning": "The Taker of Life"
+  },
+  {
+    "number": 62,
+    "arabic": "الْحَيُّ",
+    "transliteration": "Al-Hayy",
+    "meaning": "The Living"
+  },
+  {
+    "number": 63,
+    "arabic": "الْقَيُّومُ",
+    "transliteration": "Al-Qayyum",
+    "meaning": "The Self-Existing, The Self-Sustaining"
+  },
+  {
+    "number": 64,
+    "arabic": "الْوَاجِدُ",
+    "transliteration": "Al-Wajid",
+    "meaning": "The Finder, The Unfailing"
+  },
+  {
+    "number": 65,
+    "arabic": "الْمَاجِدُ",
+    "transliteration": "Al-Majid",
+    "meaning": "The Noble, The Illustrious"
+  },
+  {
+    "number": 66,
+    "arabic": "الْواحِدُ",
+    "transliteration": "Al-Wahid",
+    "meaning": "The One, The Unique"
+  },
+  {
+    "number": 67,
+    "arabic": "اَلاَحَدُ",
+    "transliteration": "Al-Ahad",
+    "meaning": "The Unity, The Indivisible"
+  },
+  {
+    "number": 68,
+    "arabic": "الصَّمَدُ",
+    "transliteration": "As-Samad",
+    "meaning": "The Eternal, The Absolute"
+  },
+  {
+    "number": 69,
+    "arabic": "الْقَادِرُ",
+    "transliteration": "Al-Qadir",
+    "meaning": "The Capable, The Powerful"
+  },
+  {
+    "number": 70,
+    "arabic": "الْمُقْتَدِرُ",
+    "transliteration": "Al-Muqtadir",
+    "meaning": "The Determiner, The Dominant"
+  },
+  {
+    "number": 71,
+    "arabic": "الْمُقَدِّمُ",
+    "transliteration": "Al-Muqaddim",
+    "meaning": "The Expediter, The Promoter"
+  },
+  {
+    "number": 72,
+    "arabic": "الْمُؤَخِّرُ",
+    "transliteration": "Al-Mu'akhkhir",
+    "meaning": "The Delayer, The Retarder"
+  },
+  {
+    "number": 73,
+    "arabic": "الأوَّلُ",
+    "transliteration": "Al-Awwal",
+    "meaning": "The First"
+  },
+  {
+    "number": 74,
+    "arabic": "الآخِرُ",
+    "transliteration": "Al-Akhir",
+    "meaning": "The Last"
+  },
+  {
+    "number": 75,
+    "arabic": "الظَّاهِرُ",
+    "transliteration": "Az-Zahir",
+    "meaning": "The Manifest, The Evident"
+  },
+  {
+    "number": 76,
+    "arabic": "الْبَاطِنُ",
+    "transliteration": "Al-Batin",
+    "meaning": "The Hidden, The Unmanifest"
+  },
+  {
+    "number": 77,
+    "arabic": "الْوَالِي",
+    "transliteration": "Al-Wali",
+    "meaning": "The Governor, The Ruler"
+  },
+  {
+    "number": 78,
+    "arabic": "الْمُتَعَالِي",
+    "transliteration": "Al-Muta'ali",
+    "meaning": "The Self Exalted"
+  },
+  {
+    "number": 79,
+    "arabic": "الْبَرُّ",
+    "transliteration": "Al-Barr",
+    "meaning": "The Good, The Beneficent"
+  },
+  {
+    "number": 80,
+    "arabic": "التَّوَابُ",
+    "transliteration": "At-Tawwab",
+    "meaning": "The Acceptor of Repentance"
+  },
+  {
+    "number": 81,
+    "arabic": "الْمُنْتَقِمُ",
+    "transliteration": "Al-Muntaqim",
+    "meaning": "The Avenger"
+  },
+  {
+    "number": 82,
+    "arabic": "العَفُوُّ",
+    "transliteration": "Al-Afuww",
+    "meaning": "The Pardoner, The Effacer"
+  },
+  {
+    "number": 83,
+    "arabic": "الرَّؤُوفُ",
+    "transliteration": "Ar-Ra'uf",
+    "meaning": "The Compassionate, The Benevolent"
+  },
+  {
+    "number": 84,
+    "arabic": "مَالِكُ الْمُلْكِ",
+    "transliteration": "Malik-al-Mulk",
+    "meaning": "The Owner of All Sovereignty"
+  },
+  {
+    "number": 85,
+    "arabic": "ذُوالْجَلاَلِ وَالإكْرَامِ",
+    "transliteration": "Dhu-al-Jalali wa-al-Ikram",
+    "meaning": "The Lord of Majesty and Bounty"
+  },
+  {
+    "number": 86,
+    "arabic": "الْمُقْسِطُ",
+    "transliteration": "Al-Muqsit",
+    "meaning": "The Equitable, The Requiter"
+  },
+  {
+    "number": 87,
+    "arabic": "الْجَامِعُ",
+    "transliteration": "Al-Jami",
+    "meaning": "The Gatherer, The Unifier"
+  },
+  {
+    "number": 88,
+    "arabic": "الْغَنِيُّ",
+    "transliteration": "Al-Ghani",
+    "meaning": "The Rich, The Independent"
+  },
+  {
+    "number": 89,
+    "arabic": "الْمُغْنِي",
+    "transliteration": "Al-Mughni",
+    "meaning": "The Enricher, The Emancipator"
+  },
+  {
+    "number": 90,
+    "arabic": "اَلْمَانِعُ",
+    "transliteration": "Al-Mani'",
+    "meaning": "The Withholder, The Shielder"
+  },
+  {
+    "number": 91,
+    "arabic": "الضَّارَّ",
+    "transliteration": "Ad-Darr",
+    "meaning": "The Distressor, The Harmer"
+  },
+  {
+    "number": 92,
+    "arabic": "النَّافِعُ",
+    "transliteration": "An-Nafi'",
+    "meaning": "The Propitious, The Benefactor"
+  },
+  {
+    "number": 93,
+    "arabic": "النُّورُ",
+    "transliteration": "An-Nur",
+    "meaning": "The Light"
+  },
+  {
+    "number": 94,
+    "arabic": "الْهَادِي",
+    "transliteration": "Al-Hadi",
+    "meaning": "The Guide"
+  },
+  {
+    "number": 95,
+    "arabic": "الْبَدِيعُ",
+    "transliteration": "Al-Badi",
+    "meaning": "The Incomparable, The Originator"
+  },
+  {
+    "number": 96,
+    "arabic": "اَلْبَاقِي",
+    "transliteration": "Al-Baqi",
+    "meaning": "The Everlasting, The Eternal"
+  },
+  {
+    "number": 97,
+    "arabic": "الْوَارِثُ",
+    "transliteration": "Al-Warith",
+    "meaning": "The Inheritor, The Heir"
+  },
+  {
+    "number": 98,
+    "arabic": "الرَّشِيدُ",
+    "transliteration": "Ar-Rashid",
+    "meaning": "The Guide, The Right Director"
+  },
+  {
+    "number": 99,
+    "arabic": "الصَّبُورُ",
+    "transliteration": "As-Sabur",
+    "meaning": "The Patient, The Timeless"
+  }
+]

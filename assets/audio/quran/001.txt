@@ -1,0 +1,16 @@
+# Sample Audio File Placeholder
+
+This is a placeholder for the audio file 001.mp3 (Al-Fatihah).
+
+To add actual Quran audio:
+1. Download MP3 files from a reliable Islamic source
+2. Rename them to match the pattern: 001.mp3, 002.mp3, etc.
+3. Replace this .txt file with the actual .mp3 file
+
+Note: Due to file size limitations, actual audio files are not included.
+You can download high-quality Quran recitations from:
+- https://www.mp3quran.net/
+- https://quran.com/
+- Other verified Islamic audio sources
+
+Make sure to use recitations that are permissible and from trusted sources.
