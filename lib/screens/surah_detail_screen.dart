@@ -8,7 +8,11 @@ class SurahDetailScreen extends StatefulWidget {
   final int surahNumber;
   final String title;
 
-  const SurahDetailScreen({super.key, required this.surahNumber, required this.title});
+  const SurahDetailScreen({
+    super.key,
+    required this.surahNumber,
+    required this.title,
+  });
 
   @override
   State<SurahDetailScreen> createState() => _SurahDetailScreenState();
@@ -42,7 +46,9 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     // Get ayahs data and initialize audio
     final api = QuranApiService();
     try {
-      final ayahs = await api.fetchSurahWithArabicAndEnglish(widget.surahNumber);
+      final ayahs = await api.fetchSurahWithArabicAndEnglish(
+        widget.surahNumber,
+      );
       await _audioService.initializeAyahPlayback(widget.surahNumber, ayahs);
     } catch (e) {
       print('Error initializing audio: $e');
@@ -61,7 +67,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         actions: [
           // Play/Pause button
           IconButton(
-            icon: Icon(_isPlaying ? Icons.pause_circle_outline : Icons.play_circle_outline),
+            icon: Icon(
+              _isPlaying
+                  ? Icons.pause_circle_outline
+                  : Icons.play_circle_outline,
+            ),
             onPressed: () async {
               if (_isPlaying) {
                 await _audioService.pause();
@@ -94,7 +104,8 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                       left: 8.0,
                       right: 8.0,
                       top: 8.0,
-                      bottom: 90.0, // Space for fixed audio player (80px + 10px margin)
+                      bottom:
+                          95.0, // Space for fixed audio player (80px + 10px margin)
                     ),
                     itemCount: ayahs.length,
                     separatorBuilder: (_, __) => const Divider(height: 1),
@@ -123,14 +134,14 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
             ),
           ),
-          
+
           // Simple fixed bottom audio player - always visible
           Positioned(
             left: 0,
             right: 0,
             bottom: 0,
             child: Container(
-              height: 80,
+              height: 90,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.only(
@@ -147,7 +158,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
               child: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 8.0,
+                  ),
                   child: Row(
                     children: [
                       // Surah info
@@ -174,14 +188,19 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                           ],
                         ),
                       ),
-                      
+
                       // Audio controls
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: Icon(Icons.skip_previous, color: Colors.grey[600]),
-                            onPressed: () async => await _audioService.playPreviousAyah(),
+                            icon: Icon(
+                              Icons.skip_previous,
+                              color: Colors.grey[600],
+                            ),
+                            onPressed:
+                                () async =>
+                                    await _audioService.playPreviousAyah(),
                           ),
                           Container(
                             width: 48,
@@ -207,8 +226,12 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.skip_next, color: Colors.grey[600]),
-                            onPressed: () async => await _audioService.playNextAyah(),
+                            icon: Icon(
+                              Icons.skip_next,
+                              color: Colors.grey[600],
+                            ),
+                            onPressed:
+                                () async => await _audioService.playNextAyah(),
                           ),
                         ],
                       ),
@@ -223,5 +246,3 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     );
   }
 }
-
-

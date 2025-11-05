@@ -5,7 +5,7 @@ import '../services/quran_audio_service.dart';
 class QuranAudioPlayer extends StatefulWidget {
   final String surahName;
   final int surahNumber;
-  
+
   const QuranAudioPlayer({
     super.key,
     required this.surahName,
@@ -59,16 +59,13 @@ class _QuranAudioPlayerState extends State<QuranAudioPlayer> {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
-    
+
     return Container(
       height: 80,
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            color.primary,
-            color.primaryContainer,
-          ],
+          colors: [color.primary, color.primaryContainer],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -114,26 +111,25 @@ class _QuranAudioPlayerState extends State<QuranAudioPlayer> {
                     ],
                   ),
                 ),
-                
+
                 // Audio controls
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // Previous button (placeholder)
                     IconButton(
-                      icon: Icon(
-                        Icons.skip_previous,
-                        color: color.onPrimary,
-                      ),
+                      icon: Icon(Icons.skip_previous, color: color.onPrimary),
                       onPressed: () {
                         // TODO: Implement previous surah
                       },
                     ),
-                    
+
                     // Play/Pause button
                     IconButton(
                       icon: Icon(
-                        _isPlaying ? Icons.pause_circle_filled : Icons.play_circle_filled,
+                        _isPlaying
+                            ? Icons.pause_circle_filled
+                            : Icons.play_circle_filled,
                         color: color.onPrimary,
                         size: 32,
                       ),
@@ -147,24 +143,18 @@ class _QuranAudioPlayerState extends State<QuranAudioPlayer> {
                         }
                       },
                     ),
-                    
+
                     // Next button (placeholder)
                     IconButton(
-                      icon: Icon(
-                        Icons.skip_next,
-                        color: color.onPrimary,
-                      ),
+                      icon: Icon(Icons.skip_next, color: color.onPrimary),
                       onPressed: () {
                         // TODO: Implement next surah
                       },
                     ),
-                    
+
                     // Close button
                     IconButton(
-                      icon: Icon(
-                        Icons.close,
-                        color: color.onPrimary,
-                      ),
+                      icon: Icon(Icons.close, color: color.onPrimary),
                       onPressed: () async {
                         await _audioService.stop();
                         if (mounted) {
@@ -176,7 +166,7 @@ class _QuranAudioPlayerState extends State<QuranAudioPlayer> {
                 ),
               ],
             ),
-            
+
             // Progress bar
             Expanded(
               child: Row(
@@ -190,12 +180,15 @@ class _QuranAudioPlayerState extends State<QuranAudioPlayer> {
                   ),
                   Expanded(
                     child: Slider(
-                      value: _totalDuration.inMilliseconds > 0
-                          ? _currentPosition.inMilliseconds / _totalDuration.inMilliseconds
-                          : 0.0,
+                      value:
+                          _totalDuration.inMilliseconds > 0
+                              ? _currentPosition.inMilliseconds /
+                                  _totalDuration.inMilliseconds
+                              : 0.0,
                       onChanged: (value) {
                         final position = Duration(
-                          milliseconds: (value * _totalDuration.inMilliseconds).round(),
+                          milliseconds:
+                              (value * _totalDuration.inMilliseconds).round(),
                         );
                         _audioService.seek(position);
                       },
