@@ -6,6 +6,8 @@ import '../core/services/location_service.dart';
 import '../core/services/prayer_service.dart';
 import '../core/services/notification_service.dart';
 import '../core/i18n/strings.dart';
+import '../core/widgets/prayer_countdown_widget.dart';
+import '../core/widgets/prayer_times_info_widget.dart';
 
 class PrayerTimesScreen extends StatelessWidget {
   const PrayerTimesScreen({super.key});
@@ -34,18 +36,26 @@ class PrayerTimesScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: Builder(
-          builder: (context) {
-            // HARDCODED ACCURATE TIMES - NO CUBIT, NO API, NO PROBLEMS
-            final now = DateTime.now();
-            final accurateTimes = {
-              'Fajr': DateTime(now.year, now.month, now.day, 4, 42),     // ✅ Correct
-              'Sunrise': DateTime(now.year, now.month, now.day, 6, 11),  // ✅ Correct  
-              'Dhuhr': DateTime(now.year, now.month, now.day, 11, 38),   // ✅ Correct
-              'Asr': DateTime(now.year, now.month, now.day, 14, 34),     // Fixed: 2:34 PM (more accurate)
-              'Maghrib': DateTime(now.year, now.month, now.day, 17, 15), // Fixed: 5:15 PM (more accurate)
-              'Isha': DateTime(now.year, now.month, now.day, 18, 45),    // Fixed: 6:45 PM (more accurate)
-            };
+        body: BlocBuilder<PrayerCubit, PrayerState>(
+          builder: (context, state) {
+            if (state.loading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            
+            if (state.error != null) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Error: ${state.error}'),
+                    ElevatedButton(
+                      onPressed: () => context.read<PrayerCubit>().loadToday(),
+                      child: const Text('Retry'),
+                    ),
+                  ],
+                ),
+              );
+            }
 
             final prayerOrder = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
             final prayerNames = {
@@ -57,22 +67,8 @@ class PrayerTimesScreen extends StatelessWidget {
               'Isha': 'Isha',
             };
             
-            // Find next prayer
-            String? nextName;
-            DateTime? nextTime;
-            for (final name in prayerOrder) {
-              if (accurateTimes[name]!.isAfter(now)) {
-                nextName = name;
-                nextTime = accurateTimes[name];
-                break;
-              }
-            }
-            
             final today = DateTime.now();
             final dateStr = DateFormat('EEE, d MMM yyyy').format(today);
-            
-            print('🕌 HARDCODED TIMES LOADED:');
-            print('Fajr: 04:42, Dhuhr: 11:38, Asr: 14:30');
 
             return CustomScrollView(
               slivers: [
@@ -101,12 +97,12 @@ class PrayerTimesScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                nextName != null ? prayerNames[nextName] ?? nextName : s.t('next_prayer'),
+                                state.nextPrayer != null ? prayerNames[state.nextPrayer] ?? state.nextPrayer! : s.t('next_prayer'),
                                 style: Theme.of(context).textTheme.titleMedium?.copyWith(color: color.onPrimary),
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                nextTime != null ? DateFormat('hh:mm').format(nextTime) : '--:--',
+                                state.nextPrayerTime != null ? DateFormat('hh:mm').format(state.nextPrayerTime!) : '--:--',
                                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                       color: color.onPrimary,
                                       fontWeight: FontWeight.bold,
@@ -114,7 +110,7 @@ class PrayerTimesScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                nextTime != null ? DateFormat('a').format(nextTime) : '',
+                                state.nextPrayerTime != null ? DateFormat('a').format(state.nextPrayerTime!) : '',
                                 style: Theme.of(context).textTheme.titleMedium?.copyWith(color: color.onPrimary),
                               ),
                               const SizedBox(height: 8),
@@ -143,13 +139,13 @@ class PrayerTimesScreen extends StatelessWidget {
                           for (final name in prayerOrder) ...[
                             Builder(
                               builder: (context) {
-                                final time = accurateTimes[name]!;
-                                print('🕌 HARDCODED: $name = ${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}');
+                                final time = state.times[name];
+                                if (time == null) return const SizedBox.shrink();
                                 return _PrayerRow(
                                   label: prayerNames[name] ?? name,
                                   time: time,
                                   assetName: _assetFor(name),
-                                  highlight: nextName == name,
+                                  highlight: state.nextPrayer == name,
                                 );
                               },
                             ),
@@ -159,6 +155,13 @@ class PrayerTimesScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (state.nextPrayer != null && state.nextPrayerTime != null)
+                  SliverToBoxAdapter(
+                    child: PrayerCountdownWidget(
+                      nextPrayerTime: state.nextPrayerTime!,
+                      nextPrayerName: state.nextPrayer!,
+                    ),
+                  ),
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
@@ -175,6 +178,9 @@ class PrayerTimesScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+                const SliverToBoxAdapter(
+                  child: PrayerTimesInfoWidget(),
                 ),
               ],
             );

@@ -43,7 +43,7 @@ dependencies:
   flutter_compass: ^0.8.0
   adhan_dart: 1.2.0
   flutter_local_notifications: ^18.0.1
-  intl: 0.19.0
+  intl: 0.20.2
   timezone: ^0.9.2
   http: ^1.2.2
   hijri: ^3.0.0
@@ -75,6 +75,7 @@ flutter:
     - assets/quran/
     - assets/names/
     - assets/audio/quran/
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

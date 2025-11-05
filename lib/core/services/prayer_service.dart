@@ -1,33 +1,27 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'prayer_calculation_service.dart';
 
 class PrayerService {
-  // Use the EXACT same API that mosques use for accurate prayer times
+  final PrayerCalculationService _calculationService = PrayerCalculationService();
   
   Future<Map<String, DateTime>> getPrayerTimes({
     required double latitude, 
     required double longitude, 
     DateTime? date
   }) async {
-    final now = DateTime.now();
+    final targetDate = date ?? DateTime.now();
     
-    print('🕌 Using YOUR EXACT ACCURATE TIMES');
-    print('Fajr: 04:42');
-    print('Sunrise: 06:11');
-    print('Dhuhr: 11:38');
-    print('Asr: 14:30');
-    print('Maghrib: 17:15');
-    print('Isha: 18:45');
+    // Use approximation equations for prayer time calculations
+    final calculatedTimes = _calculationService.calculatePrayerTimes(targetDate);
     
-    // Use YOUR exact accurate times
-    return {
-      'Fajr': DateTime(now.year, now.month, now.day, 4, 42),
-      'Sunrise': DateTime(now.year, now.month, now.day, 6, 11),
-      'Dhuhr': DateTime(now.year, now.month, now.day, 11, 38),
-      'Asr': DateTime(now.year, now.month, now.day, 14, 30),
-      'Maghrib': DateTime(now.year, now.month, now.day, 17, 15),
-      'Isha': DateTime(now.year, now.month, now.day, 18, 45),
-    };
+    print('🕌 Using CALCULATED PRAYER TIMES with seasonal adjustments');
+    print('Date: ${targetDate.day}/${targetDate.month}/${targetDate.year}');
+    calculatedTimes.forEach((name, time) {
+      print('$name: ${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}');
+    });
+    
+    return calculatedTimes;
   }
   
   Future<Map<String, DateTime>> _getAladhanTimes(double latitude, double longitude, DateTime date) async {
@@ -102,13 +96,7 @@ class PrayerService {
   
 
   String? getNextPrayerName(Map<String, DateTime> times) {
-    final now = DateTime.now();
-    final List<MapEntry<String, DateTime>> ordered = times.entries.toList()
-      ..sort((a, b) => a.value.compareTo(b.value));
-    for (final e in ordered) {
-      if (e.value.isAfter(now)) return e.key;
-    }
-    return null;
+    return _calculationService.getNextPrayerName(times);
   }
 }
 

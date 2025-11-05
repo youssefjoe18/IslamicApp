@@ -66,22 +66,17 @@ class PrayerCubit extends Cubit<PrayerState> {
     try {
       emit(state.copyWith(loading: true, error: null));
       
-      // Use accurate times directly - no location or API needed
-      final now = DateTime.now();
-      final times = {
-        'Fajr': DateTime(now.year, now.month, now.day, 4, 42),
-        'Sunrise': DateTime(now.year, now.month, now.day, 6, 11),
-        'Dhuhr': DateTime(now.year, now.month, now.day, 11, 38),
-        'Asr': DateTime(now.year, now.month, now.day, 14, 30),
-        'Maghrib': DateTime(now.year, now.month, now.day, 17, 15),
-        'Isha': DateTime(now.year, now.month, now.day, 18, 45),
-      };
+      // Use calculated prayer times with seasonal adjustments
+      final position = await locationService.getCurrentPosition();
+      final times = await prayerService.getPrayerTimes(
+        latitude: position.latitude,
+        longitude: position.longitude,
+      );
       
       final next = prayerService.getNextPrayerName(times);
       final nextTime = next != null ? times[next] : null;
       
-      print('🕌 PRAYER CUBIT: Loading accurate times');
-      print('Fajr: 04:42, Dhuhr: 11:38, Asr: 14:30');
+      print('🕌 PRAYER CUBIT: Loading calculated times with seasonal adjustments');
       
       emit(state.copyWith(
         loading: false,

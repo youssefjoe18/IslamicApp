@@ -3,9 +3,56 @@ import '../core/widgets/primary_card.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/nav/nav_cubit.dart';
 import '../core/i18n/strings.dart';
+import '../core/services/prayer_service.dart';
+import '../core/services/location_service.dart';
+import 'package:intl/intl.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final PrayerService _prayerService = PrayerService();
+  final LocationService _locationService = LocationService();
+  Map<String, DateTime> _prayerTimes = {};
+  String? _nextPrayer;
+  DateTime? _nextPrayerTime;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPrayerTimes();
+  }
+
+  Future<void> _loadPrayerTimes() async {
+    try {
+      final position = await _locationService.getCurrentPosition();
+      final times = await _prayerService.getPrayerTimes(
+        latitude: position.latitude,
+        longitude: position.longitude,
+      );
+      final nextPrayer = _prayerService.getNextPrayerName(times);
+      
+      if (mounted) {
+        setState(() {
+          _prayerTimes = times;
+          _nextPrayer = nextPrayer;
+          _nextPrayerTime = nextPrayer != null ? times[nextPrayer] : null;
+          _loading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _loading = false;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,17 +110,65 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '2:44', // placeholder time view only
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: color.onPrimary,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (_loading)
+                              const CircularProgressIndicator(color: Colors.white)
+                            else if (_nextPrayer != null && _nextPrayerTime != null) ...[
+                              Text(
+                                'Next: $_nextPrayer',
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  color: color.onPrimary.withOpacity(0.9),
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                DateFormat('hh:mm a').format(_nextPrayerTime!),
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  color: color.onPrimary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ] else
+                              Text(
+                                '--:--',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  color: color.onPrimary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
-                      Icon(Icons.wb_sunny_outlined, color: color.onPrimary),
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.transparent,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            'assets/images/Screenshot 2025-11-05 113253.png',
+                            fit: BoxFit.cover,
+                            width: 80,
+                            height: 80,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Icon(
+                                Icons.person_outline,
+                                color: color.onPrimary,
+                                size: 40,
+                              );
+                            },
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 12),
                   TextButton(
                     onPressed: () => context.read<NavCubit>().setIndex(1),
                     child: Text(
@@ -107,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                   child: _FeatureTile(
                     title: 'محدد القبلة',
                     icon: Icons.explore,
-                    onTap: () => context.read<NavCubit>().setIndex(3),
+                    onTap: () => Navigator.of(context).pushNamed('/qibla'),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -115,7 +210,7 @@ class HomeScreen extends StatelessWidget {
                   child: _FeatureTile(
                     title: 'عدّاد التسبيح',
                     icon: Icons.fingerprint,
-                    onTap: () => context.read<NavCubit>().setIndex(4),
+                    onTap: () => Navigator.of(context).pushNamed('/tasbih'),
                   ),
                 ),
               ],
