@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'blocs/theme/theme_cubit.dart';
 import 'blocs/nav/nav_cubit.dart';
 import 'blocs/tasbih/tasbih_cubit.dart';
@@ -22,7 +23,9 @@ import 'screens/names_screen.dart';
 import 'core/i18n/strings.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  
   final prefs = await SharedPreferences.getInstance();
   final preferencesService = PreferencesService(prefs: prefs);
   
@@ -30,9 +33,10 @@ void main() async {
   try {
     final notificationService = NotificationService();
     await notificationService.init();
+    print('✅ Notification service initialized at startup');
   } catch (e) {
     // Ignore notification initialization errors
-    print('Notification initialization error: $e');
+    print('❌ Notification initialization error: $e');
   }
   
   // Auto-schedule notifications at startup if enabled
@@ -42,9 +46,10 @@ void main() async {
       final notif = NotificationService();
       await notif.init();
       await notif.scheduleForTodayUsing(locationService: LocationService(), prayerService: PrayerService());
+      print('✅ Prayer notifications scheduled at startup');
     } catch (e) {
       // Ignore notification errors to prevent app from crashing
-      print('Notification service error: $e');
+      print('❌ Notification service error: $e');
     }
   }
   runApp(MyApp(preferencesService: preferencesService));
@@ -97,10 +102,53 @@ class MyApp extends StatelessWidget {
     final darkTheme = ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: seed,
+        seedColor: const Color(0xFF00A876),
         brightness: Brightness.dark,
-      ).copyWith(secondary: const Color(0xFFF59E0B)),
-      appBarTheme: const AppBarTheme(centerTitle: true),
+      ).copyWith(
+        primary: const Color(0xFF4DD0A7), // Lighter green for dark mode
+        primaryContainer: const Color(0xFF00A876), // Original green
+        secondary: const Color(0xFF26D0CE), // Teal accent
+        surface: const Color(0xFF2A2A2A), // Dark grey surface for widgets
+        background: const Color(0xFF1E1E1E), // Same as nav bar background
+        onPrimary: const Color(0xFF000000), // Black text on primary
+        onPrimaryContainer: Colors.white, // White text on primary container
+        onSurface: const Color(0xFFE0E0E0), // Light text on dark surface
+        onBackground: const Color(0xFFE0E0E0), // Light text on dark background
+        surfaceVariant: const Color(0xFF1E1E1E), // Slightly lighter dark surface
+        onSurfaceVariant: const Color(0xFFB0B0B0), // Medium light text
+        outline: const Color(0xFF404040), // Dark outline
+      ),
+      scaffoldBackgroundColor: const Color(0xFF1E1E1E),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFF00A876),
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: false,
+      ),
+      cardTheme: CardThemeData(
+        color: const Color(0xFF2A2A2A),
+        elevation: 8,
+        shadowColor: Colors.black.withOpacity(0.3),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF4DD0A7),
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: const Color(0xFF1E1E1E),
+        indicatorColor: const Color(0xFF4DD0A7).withOpacity(0.3),
+        labelTextStyle: MaterialStateProperty.all(
+          const TextStyle(color: Color(0xFFB0B0B0), fontSize: 12),
+        ),
+      ),
     );
 
     return MultiRepositoryProvider(
@@ -118,7 +166,7 @@ class MyApp extends StatelessWidget {
           builder: (context, mode) {
             return BlocBuilder<LocaleCubit, Locale>(builder: (context, locale) {
               return MaterialApp(
-                title: 'We Muslim - Inspired',
+                title: 'صلاتك اليوم',
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   useMaterial3: true,
@@ -178,15 +226,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainShell extends StatelessWidget {
+class MainShell extends StatefulWidget {
   const MainShell({super.key});
 
+  @override
+  State<MainShell> createState() => _MainShellState();
+}
+
+class _MainShellState extends State<MainShell> {
   static final List<Widget> _pages = const <Widget>[
     HomeScreen(),
     PrayerTimesScreen(),
     QuranScreen(),
     SettingsScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // Remove splash screen after a short delay
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      FlutterNativeSplash.remove();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

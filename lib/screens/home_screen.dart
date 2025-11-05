@@ -59,9 +59,35 @@ class _HomeScreenState extends State<HomeScreen> {
     final color = Theme.of(context).colorScheme;
     final s = S.of(context);
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FFFE),
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text(s.t('home')),
+        title: Row(
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'assets/images/app_logo.jpg',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(
+                      Icons.mosque,
+                      color: color.onPrimary,
+                      size: 24,
+                    );
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(s.t('home')),
+          ],
+        ),
         backgroundColor: color.primary,
         foregroundColor: color.onPrimary,
       ),
@@ -143,8 +169,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Container(
-                        width: 80,
-                        height: 80,
+                        width: 100,
+                        height: 100,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: Colors.transparent,
@@ -154,8 +180,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Image.asset(
                             'assets/images/Screenshot 2025-11-05 113253.png',
                             fit: BoxFit.cover,
-                            width: 80,
-                            height: 80,
+                            width: 100,
+                            height: 100,
                             errorBuilder: (context, error, stackTrace) {
                               return Icon(
                                 Icons.person_outline,
@@ -263,15 +289,20 @@ class _QuickActionTile extends StatelessWidget {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 6)],
             ),
-            child: Icon(icon, color: color.primary),
+            child: Icon(
+              icon, 
+              color: Theme.of(context).brightness == Brightness.dark 
+                ? Colors.white 
+                : color.primary,
+            ),
           ),
         ),
         const SizedBox(height: 6),
-        Text(label, style: const TextStyle(fontSize: 12)),
+        Text(label, style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onBackground)),
       ],
     );
   }
@@ -290,7 +321,7 @@ class _FeatureTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 6)],
         ),
@@ -303,11 +334,16 @@ class _FeatureTile extends StatelessWidget {
                 color: color.primary.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(icon, color: color.primary),
+              child: Icon(
+                icon, 
+                color: Theme.of(context).brightness == Brightness.dark 
+                  ? Colors.white 
+                  : color.primary,
+              ),
             ),
             const SizedBox(width: 12),
-            Expanded(child: Text(title, style: Theme.of(context).textTheme.titleMedium)),
-            const Icon(Icons.chevron_right),
+            Expanded(child: Text(title, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Theme.of(context).colorScheme.onSurface))),
+            Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.onSurface),
           ],
         ),
       ),

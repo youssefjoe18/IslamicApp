@@ -59,6 +59,38 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.10
+
+# Flutter Launcher Icons configuration
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_logo.jpg"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/images/app_logo.jpg"
+  windows:
+    generate: true
+    image_path: "assets/images/app_logo.jpg"
+  macos:
+    generate: true
+    image_path: "assets/images/app_logo.jpg"
+
+# Flutter Native Splash configuration
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/app_logo.jpg
+  branding: assets/images/app_logo.jpg
+  color_dark: "#FFFFFF"
+  image_dark: assets/images/app_logo.jpg
+  android_12:
+    image: assets/images/app_logo.jpg
+    color: "#FFFFFF"
+    image_dark: assets/images/app_logo.jpg
+    color_dark: "#FFFFFF"
+  web: false
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

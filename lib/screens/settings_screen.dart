@@ -80,14 +80,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
           SwitchListTile(
             secondary: const Icon(Icons.notifications_active),
             title: Text(s.t('prayer_notifications')),
+            subtitle: Text(_notifEnabled ? 'Prayer notifications enabled' : 'Prayer notifications disabled'),
             value: _notifEnabled,
             onChanged: (v) async {
               setState(() { _notifEnabled = v; });
               if (_prefs != null) await _prefs!.setNotificationsEnabled(v);
               if (v) {
-                await _notif.scheduleForTodayUsing(locationService: _loc, prayerService: _prayer);
+                try {
+                  await _notif.scheduleForTodayUsing(locationService: _loc, prayerService: _prayer);
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('✅ Prayer notifications scheduled successfully'),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('❌ Failed to schedule notifications: $e'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  }
+                }
               } else {
                 await _notif.cancelAll();
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('🔕 Prayer notifications cancelled'),
+                      backgroundColor: Colors.orange,
+                    ),
+                  );
+                }
               }
             },
           ),
